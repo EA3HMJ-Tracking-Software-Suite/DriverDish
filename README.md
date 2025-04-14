@@ -2,6 +2,10 @@
 Program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
 
 [Version and download](#Versions)
+## New version 2.2
+
+New system for setting offset data. Click on the offset field and a window appears to make it easier to change the value.
+![image](https://github.com/user-attachments/assets/ba9d04c2-244a-49ff-99bb-ce4973d3b9f9)
 
 ## New version 2.0
 
