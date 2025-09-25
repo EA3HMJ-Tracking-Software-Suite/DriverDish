@@ -2,6 +2,13 @@
 Program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
 
 [Version and download](#Versions)
+## New version 3.0
+
+Version 3.0 incorporates the ephemeris server and increases its accuracy, so it is no longer necessary to run JPLastroserver.
+<img width="1145" height="981" alt="image" src="https://github.com/user-attachments/assets/c72e4c60-8693-4ea8-b397-d06b242f6b1d" />
+It also adds an auto-calibration system for the dish position when tracking the sun or moon. To do this, you need to be connected to SpectraVue or Sigdigger.
+<img width="1148" height="979" alt="image" src="https://github.com/user-attachments/assets/7a8907da-8cee-4799-97e7-132cadc07694" />
+
 ## New version 2.2
 
 New system for setting offset data. Click on the offset field and a window appears to make it easier to change the value.
@@ -73,6 +80,10 @@ The HeatMap software will be posted in another directory.
 1.1.1042 Auto position, computes the offset for the maximum SN signal.
 
 2.0 New program with new features
+
+2.2 New system for setting offset data
+
+3.0 Incorporates the ephemeris server. Auto-calibration system for the dish position
 
 [Versions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases)
 
