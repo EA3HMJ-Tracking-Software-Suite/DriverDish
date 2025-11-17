@@ -1,7 +1,8 @@
 # DriverDish
 Program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
 
-[Version and download](#Versions)
+[Version, documentation and download](#Versions)
+
 ## New version 3.1
 
 Version 3.1 incorporates new features
@@ -66,6 +67,19 @@ The HeatMap software will be posted in another directory.
 [DriverDish v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ESP.pdf)
 
 [DriverDish v1 ENG](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ENG.pdf).
+
+[DriverDish configuración y uso v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/Guia%20DriverDish.App%20v1%20ESP.pdf)
+
+[DriverDish started guide v2 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/GettingStartedGuide%20v2%20ea4le%20ESP.pdf)
+
+[DriverDish Autocorrection v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ESP.pdf)
+
+[DriverDish Autocorrection v1 ENG](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ENG.pdf)
+
+[DriverDish DriftScan v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ESP.pdf)
+
+[DriverDish DriftScan v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ENG.pdf)
+
 ## Versions
 1.0.0	Initial version.
 
