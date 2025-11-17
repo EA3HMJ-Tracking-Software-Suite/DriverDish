@@ -2,6 +2,16 @@
 Program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
 
 [Version and download](#Versions)
+## New version 3.1
+
+Version 3.1 incorporates new features
+Target tracking pass.
+<img width="1136" height="971" alt="image" src="https://github.com/user-attachments/assets/6167fed9-f845-4470-a70f-0cc7c95d2baf" />
+Azimuth error automation.
+<img width="1140" height="974" alt="image" src="https://github.com/user-attachments/assets/d8460a52-5b40-4bd6-bf35-83b27513417d" />
+Real HPBW measurement.
+<img width="1140" height="971" alt="image" src="https://github.com/user-attachments/assets/06a16067-a27e-4440-b160-ecd08380a0e3" />
+
 ## New version 3.0
 
 Version 3.0 incorporates the ephemeris server and increases its accuracy, so it is no longer necessary to run JPLastroserver.
@@ -84,6 +94,8 @@ The HeatMap software will be posted in another directory.
 2.2 New system for setting offset data
 
 3.0 Incorporates the ephemeris server. Auto-calibration system for the dish position
+
+3.1 Incorporates target tracking pass, azimuth error automation, and real HPBW measurement.
 
 [Versions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases)
 
