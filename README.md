@@ -1,120 +1,149 @@
 # DriverDish
-Program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
 
-[Version, documentation and download](#Versions)
+DriverDish is the main Windows application of the [EA3HMJ Tracking Software Suite](https://github.com/EA3HMJ-Tracking-Software-Suite). It calculates target ephemerides, generates pointing commands, communicates with [ControllerDish](https://github.com/EA3HMJ-Tracking-Software-Suite/ControllerDish), and provides the tools required to operate and evaluate a high-precision two-axis antenna tracking system.
 
-## New version 3.1
+It is intended for amateur Earth-Moon-Earth communication (EME), radio astronomy, amateur Deep Space Network (DSN), and other space communication applications.
 
-Version 3.1 incorporates new features
-Target tracking pass.
-<img width="1136" height="971" alt="image" src="https://github.com/user-attachments/assets/6167fed9-f845-4470-a70f-0cc7c95d2baf" />
-Azimuth error automation.
-<img width="1140" height="974" alt="image" src="https://github.com/user-attachments/assets/d8460a52-5b40-4bd6-bf35-83b27513417d" />
-Real HPBW measurement.
-<img width="1140" height="971" alt="image" src="https://github.com/user-attachments/assets/06a16067-a27e-4440-b160-ecd08380a0e3" />
+## Current version: 3.2
 
-## New version 3.0
+DriverDish 3.2 combines ephemeris calculation, antenna control, pass planning, pointing calibration, antenna-performance measurement, and fixed-source tracking by right ascension and declination in one application. Separate Astroserver or JPLastroserver programs are no longer required.
 
-Version 3.0 incorporates the ephemeris server and increases its accuracy, so it is no longer necessary to run JPLastroserver.
-<img width="1145" height="981" alt="image" src="https://github.com/user-attachments/assets/c72e4c60-8693-4ea8-b397-d06b242f6b1d" />
-It also adds an auto-calibration system for the dish position when tracking the sun or moon. To do this, you need to be connected to SpectraVue or Sigdigger.
-<img width="1148" height="979" alt="image" src="https://github.com/user-attachments/assets/7a8907da-8cee-4799-97e7-132cadc07694" />
+[Download DriverDish 3.2](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases/latest)
 
-## New version 2.2
+## ControllerDish compatibility
 
-New system for setting offset data. Click on the offset field and a window appears to make it easier to change the value.
-![image](https://github.com/user-attachments/assets/ba9d04c2-244a-49ff-99bb-ce4973d3b9f9)
+> [!IMPORTANT]
+> DriverDish 3.1 and later require **ControllerDish firmware 4.x or later**.
 
-## New version 2.0
+ControllerDish firmware 4.x introduced the Modbus protocol used for communication between DriverDish and ControllerDish. The standard serial connection uses **Modbus RTU over RS-485**.
 
-The new version of DriverDish it is a major change as I have rewritten the whole app.
-I've been testing it for a while and it has passed my tests, things can always go wrong and I'm waiting for your reports.
-This version needs a new firmware (4.x+) in ControllerDish, which is totally new and with a new security philosophy.
-Due to problems with a chip in the controller I have lowered the communication speed to 115200 Bauds instead of 500000 bauds, it doesn't affect the accuracy but it eliminates a problem.
+Earlier ControllerDish firmware versions use the previous communication protocol and are not compatible with current DriverDish versions. Update ControllerDish with the firmware package that matches its hardware family before connecting it to DriverDish:
 
-<img src="https://github.com/user-attachments/assets/0d0f3899-75bb-46a2-ae96-c8ad155a590d" width="640">
-<img src="https://github.com/user-attachments/assets/2d88f533-caa3-4422-b017-df7e5e0ea6cb" width="640">
-<img src="https://github.com/user-attachments/assets/82ef3e7b-f930-44a1-81f6-ecfd2d98ce98" width="640">
+- ControllerDish hardware 1.x uses the `Hv1` firmware package.
+- ControllerDish hardware 2.x uses the `Hv2` firmware package.
 
+See the [ControllerDish releases](https://github.com/EA3HMJ-Tracking-Software-Suite/ControllerDish/releases/latest) for the current compatible firmware packages.
 
-## Description version 1.x
-This is the main program that is responsible for requesting data from the ephemeris server and communicating with ControllerDish.
+## Main features
 
-<img src="https://github.com/ea3hmj/EME/raw/main/img/dd10.jpg" width="640">
-<img src="https://github.com/ea3hmj/EME/raw/main/img/dd2.jpg" width="640">
-<img src="https://github.com/ea3hmj/EME/raw/main/img/dd30.jpg" width="640">
-<img src="https://github.com/ea3hmj/EME/raw/main/img/dd4.jpg" width="640">
-<img src="https://github.com/ea3hmj/EME/raw/main/img/dd5.jpg" width="640">
-<img src="https://github.com/ea3hmj/HMJTS/blob/main/img/wx.png" width="640">
+### RA/Dec fixed-source tracking - new in 3.2
 
-New functionality, Computes the offset for the maximum SN signal.
+- Tracks fixed celestial and radio sources using right ascension and declination coordinates.
+- Accepts RA/Dec coordinates in space-separated, colon-separated, HMS/DMS, or decimal-degree formats.
+- Validates coordinate format and range before tracking begins.
+- Allows the active RA/Dec source to be changed without restarting the tracking engine.
+- Loads source catalogs from `radec.txt`; the supplied catalog includes 51 bright stars with Hipparcos coordinates.
+- Applies precession, nutation, annual aberration, the equation of the equinoxes, and atmospheric refraction corrections.
+- Provides astrometric precision better than 0.001 degrees under normal operating conditions.
+- Maintains a two-hour trajectory buffer at 0.5-second resolution and reloads it automatically in the background.
+- Retrieves local pressure, temperature, and relative humidity from Open-Meteo for atmospheric-refraction correction; no API key is required.
 
-<img src="https://github.com/ea3hmj/HMJTS/assets/2368602/023db93c-6330-43fc-a475-cc25fea36a1c" width="342">
+### Integrated ephemeris calculation
 
-Communications are RS-485 at 500000 bauds.
+- Calculates target coordinates directly inside DriverDish.
+- Eliminates the need to run a separate ephemeris server.
+- Continuously updates azimuth and elevation commands during tracking.
 
-The ESP32 port is used for debug also at 500000 bauds.
+### Antenna control and monitoring
 
-It can handle CAT radios, you need to have [OMNIRIG v2.1](https://www.hb9ryz.ch/omnirig/) installed.
+- Sends target positions and movement commands to ControllerDish.
+- Displays actual azimuth and elevation feedback from the antenna sensors.
+- Provides manual movement, automatic tracking, stop, and positioning controls.
+- Supports pointing offsets and system-status monitoring.
+- Uses the feedback provided by ControllerDish for closed-loop tracking.
 
-If you have [SpectraVue v3.41](http://www.rfspace.com/RFSPACE/SpectraVue.html) installed, the program can get the RMS value of the signal in continuous mode, and with this data we can get a heatmap or radiomap.
-The HeatMap software will be posted in another directory.
+### Pass planning and tracking
 
-<img src="https://github.com/ea3hmj/EME/raw/main/img/heatmap.jpg" width="640">
+- Displays upcoming target passes and their relevant tracking information.
+- Provides a dedicated pass window for preparing and following a complete pass.
+- Allows the operator to select a target and monitor its movement throughout the available tracking period.
 
-<a name="Versions"></a>
-## Documents
-[DriverDish v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ESP.pdf)
+![Target pass tracking](https://github.com/user-attachments/assets/6167fed9-f845-4470-a70f-0cc7c95d2baf)
 
-[DriverDish v1 ENG](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ENG.pdf).
+### Automatic pointing correction
 
-[DriverDish configuración y uso v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/Guia%20DriverDish.App%20v1%20ESP.pdf)
+- Uses received signal-level measurements to determine the best pointing position.
+- Performs automatic scans around the predicted target position.
+- Calculates and applies azimuth and elevation pointing corrections.
+- Supports solar and lunar calibration workflows.
+- Can obtain signal data from SpectraVue or SigDigger.
 
-[DriverDish started guide v2 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/GettingStartedGuide%20v2%20ea4le%20ESP.pdf)
+![Automatic pointing correction](https://github.com/user-attachments/assets/d8460a52-5b40-4bd6-bf35-83b27513417d)
 
-[DriverDish Autocorrection v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ESP.pdf)
+### Drift Scan and HPBW measurement
 
-[DriverDish Autocorrection v1 ENG](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ENG.pdf)
+- Records signal level while the target drifts through the antenna beam.
+- Calculates the antenna's measured half-power beamwidth (HPBW).
+- Compares measured and theoretical HPBW.
+- Provides graphical analysis and CSV data handling.
+- Includes signal-analysis results such as peak position and Y-factor.
 
-[DriverDish DriftScan v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ESP.pdf)
+![Real HPBW measurement](https://github.com/user-attachments/assets/06a16067-a27e-4440-b160-ecd08380a0e3)
 
-[DriverDish DriftScan v1 ESP](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ENG.pdf)
+### Pointing analysis tools
 
-## Versions
-1.0.0	Initial version.
+- Characterizes systematic azimuth pointing error.
+- Calculates correction data from measurements taken at different positions.
+- Provides heatmap and signal-mapping tools for evaluating antenna response.
+- Supports offset optimization based on the maximum received signal.
 
-1.0.817	Display the ControllerDish version in the setup form.
+### Radio and Doppler control
 
-1.0.825	stop tracking whith el<0.
+- Provides a dedicated **Radios** tab for controlling compatible transceivers.
+- Uses **OmniRig** for CAT communication with supported radios.
+- Calculates Doppler-corrected frequency from the target's radial velocity.
+- Allows the tracking and radio-control workflow to be managed from the same application.
 
-1.0.827 buton stop now stop tracking & motors, Fonts update, Bug in window reposition
+## External integrations
 
-1.0.859 read ambient temp from encoder elevation
+### Radio control
 
-1.1.954 current sense motors, suport external mini weather station
+DriverDish uses **OmniRig** from the Radios tab. OmniRig must be installed and the required radio must be configured correctly before CAT control can be used.
 
-1.1.960 offset for mini eather station
+### Signal-level sources
 
-1.1.981 optimising communications with wx
+DriverDish can use compatible external signal-analysis software as the measurement source for automatic correction, Drift Scan, and related tools:
 
-1.1.1008 Stop tracking when astroserver down.
+- **SpectraVue**
+- **SigDigger**
 
-1.1.1026 Update ASCOM interface, Radio TAB add IF 7400MHz
+The selected application must be running and correctly configured before starting an automated signal-based measurement.
 
-1.1.1042 Auto position, computes the offset for the maximum SN signal.
+## Documentation
 
-2.0 New program with new features
+The following documents describe installation, configuration, and specialist workflows. Some documents were written for earlier DriverDish versions but remain useful as complementary reference material.
 
-2.2 New system for setting offset data
+- [DriverDish v1 - English](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ENG.pdf)
+- [DriverDish v1 - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish%20v1%20ESP.pdf)
+- [DriverDish configuration and use v1 - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/Guia%20DriverDish.App%20v1%20ESP.pdf)
+- [Getting Started Guide v2 by EA4LE - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/GettingStartedGuide%20v2%20ea4le%20ESP.pdf)
+- [Automatic correction - English](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ENG.pdf)
+- [Automatic correction - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ESP.pdf)
+- [Drift Scan - English](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ENG.pdf)
+- [Drift Scan - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ESP.pdf)
 
-3.0 Incorporates the ephemeris server. Auto-calibration system for the dish position
+## Releases
 
-3.1 Incorporates target tracking pass, azimuth error automation, and real HPBW measurement.
+- [Latest release](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases/latest)
+- [All DriverDish releases](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases)
 
-[Versions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases)
+### Major version history
 
-## Download
-[Latest versions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases/latest)
+| Version | Main changes |
+| --- | --- |
+| **1.x** | Original DriverDish application and external ephemeris-server workflow |
+| **2.0** | Complete application rewrite and new ControllerDish safety and communication architecture |
+| **2.2** | Improved pointing-offset configuration |
+| **3.0** | Integrated ephemeris engine and automatic Sun/Moon pointing calibration |
+| **3.1** | Target-pass window, azimuth-error analysis, Drift Scan, real HPBW measurement, and general optimizations |
+| **3.2** | RA/Dec fixed-source tracking, flexible coordinate input, source catalogs, high-precision astrometric corrections, and weather-based refraction correction |
+
+## Experience required
+
+DriverDish is part of an antenna tracking system that combines motor control, high-current electronics, position sensors, mechanical equipment, and radio-frequency measurements. It is intended for experienced users familiar with antenna tracking, electronics, and software configuration.
 
 ## Disclaimer
-This is an antenna tracking system (software and hardware) designed for amateur use in Earth–Moon–Earth communication (EME), radioastronomy, amateur Deep Sky Network (DSN) and other Space Communication applications where accurate and high precision tracking are required. 
+
+DriverDish and all related materials are provided **as is**, without any express or implied warranty. The author cannot provide individual support and does not guarantee the accuracy, completeness, suitability, or continued availability of the software.
+
+The author shall not be liable for equipment damage, data loss, personal injury, pointing errors, or any other consequences arising from the installation or use of DriverDish or the associated tracking hardware.
