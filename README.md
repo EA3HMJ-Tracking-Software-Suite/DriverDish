@@ -4,6 +4,11 @@ DriverDish is the main Windows application of the [EA3HMJ Tracking Software Suit
 
 It is intended for amateur Earth-Moon-Earth communication (EME), radio astronomy, amateur Deep Space Network (DSN), and other space communication applications.
 
+## AI technical support / Soporte tecnico con IA
+
+> [!TIP]
+> [Ask about DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish) / [Pregunta sobre DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish)
+
 ## Current version: 3.2
 
 DriverDish 3.2 combines ephemeris calculation, antenna control, pass planning, pointing calibration, antenna-performance measurement, and fixed-source tracking by right ascension and declination in one application. Separate Astroserver or JPLastroserver programs are no longer required.
