@@ -9,11 +9,11 @@ It is intended for amateur Earth-Moon-Earth communication (EME), radio astronomy
 > [!TIP]
 > [Ask about DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish) / [Pregunta sobre DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish)
 
-## Current version: 3.2
+## Current version: 3.3
 
-DriverDish 3.2 combines ephemeris calculation, antenna control, pass planning, pointing calibration, antenna-performance measurement, and fixed-source tracking by right ascension and declination in one application. Separate Astroserver or JPLastroserver programs are no longer required.
+DriverDish 3.3 adds the Q37 two-dimensional pointing-correction model, SkyDip measurements, improved signal-search and weather logging, while retaining integrated ephemerides, antenna control, pass planning, RA/Dec tracking, pointing calibration, and antenna-performance analysis.
 
-[Download DriverDish 3.2](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases/latest)
+[Download DriverDish 3.3](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/releases/tag/3.3)
 
 ## ControllerDish compatibility
 
@@ -29,9 +29,36 @@ Earlier ControllerDish firmware versions use the previous communication protocol
 
 See the [ControllerDish releases](https://github.com/EA3HMJ-Tracking-Software-Suite/ControllerDish/releases/latest) for the current compatible firmware packages.
 
+## Quick start
+
+1. Install the latest DriverDish release and the matching ControllerDish firmware.
+2. Open **Setup**, select and configure the dish-controller driver, then connect it.
+3. Open **Targets**, enter the station latitude, longitude, and height, and refresh the ephemerides.
+4. Select a target on the main screen.
+5. Configure **Radios** and **SNR** when Doppler control or signal-based measurements are required.
+6. Confirm that the calculated elevation is above the horizon and that the movement path is safe.
+7. Select the desired correction mode and click **Track to Target**.
+
+> [!WARNING]
+> Automatic correction, Heatmap, Drift Scan, SkyDip, and ON/OFF observations move the antenna automatically. Verify mechanical limits, clearance, emergency-stop access, and valid position feedback before starting them.
+
 ## Main features
 
-### RA/Dec fixed-source tracking - new in 3.2
+### Q37 pointing model and correction workflows - new in 3.3
+
+- Keeps the existing simple one-dimensional correction workflow based on `corrections.txt`.
+- Adds an advanced two-dimensional Q37 pointing model based on the 37 constants stored in `AzimuthCorrectionQ.txt`.
+- Supports automatic signal-maximum searches at configurable azimuth intervals.
+- Records correction measurements for later analysis and model fitting.
+
+### SkyDip and environmental logging - new in 3.3
+
+- Performs configurable elevation scans and records azimuth, elevation, and signal level to CSV.
+- Includes direct access to the external Sky Profile Analysis tool for interpreting SkyDip data.
+- Writes pressure, temperature, and relative humidity to the `wxlog` directory every ten minutes.
+- Uses valid local environmental sensors first and falls back to recent Open-Meteo data when local sensors are unavailable.
+
+### RA/Dec fixed-source tracking
 
 - Tracks fixed celestial and radio sources using right ascension and declination coordinates.
 - Accepts RA/Dec coordinates in space-separated, colon-separated, HMS/DMS, or decimal-degree formats.
@@ -69,9 +96,9 @@ See the [ControllerDish releases](https://github.com/EA3HMJ-Tracking-Software-Su
 
 - Uses received signal-level measurements to determine the best pointing position.
 - Performs automatic scans around the predicted target position.
-- Calculates and applies azimuth and elevation pointing corrections.
+- Calculates and applies the best azimuth pointing offset found during the scan.
 - Supports solar and lunar calibration workflows.
-- Can obtain signal data from SpectraVue or SigDigger.
+- Uses SpectraVue as the signal source for the current automatic-correction workflow.
 
 ![Automatic pointing correction](https://github.com/user-attachments/assets/d8460a52-5b40-4bd6-bf35-83b27513417d)
 
@@ -111,6 +138,7 @@ DriverDish can use compatible external signal-analysis software as the measureme
 
 - **SpectraVue**
 - **SigDigger**
+- **External radiometer input**
 
 The selected application must be running and correctly configured before starting an automated signal-based measurement.
 
@@ -142,6 +170,7 @@ The following documents describe installation, configuration, and specialist wor
 | **3.0** | Integrated ephemeris engine and automatic Sun/Moon pointing calibration |
 | **3.1** | Target-pass window, azimuth-error analysis, Drift Scan, real HPBW measurement, and general optimizations |
 | **3.2** | RA/Dec fixed-source tracking, flexible coordinate input, source catalogs, high-precision astrometric corrections, and weather-based refraction correction |
+| **3.3** | Q37 two-dimensional pointing model, SkyDip measurements, azimuth signal search, WX logging with Open-Meteo fallback, and reliability fixes |
 
 ## Experience required
 
