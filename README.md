@@ -9,6 +9,15 @@ It is intended for amateur Earth-Moon-Earth communication (EME), radio astronomy
 > [!TIP]
 > [Ask about DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish) / [Pregunta sobre DriverDish ->](https://ea3hmj-support-assistant.qlfecv.chatgpt.site/?product=DriverDish)
 
+## Issues and contributions
+
+Because of the complexity of the project and its wide range of possible hardware, software, and observing configurations, GitHub Issues and Pull Requests are used to manage DriverDish development more effectively.
+
+- Use [Issues](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/issues) to report one bug or request one feature at a time. Include the DriverDish and Windows versions, hardware and SDR configuration, reproduction steps, logs, and screenshots when available.
+- Use [Pull Requests](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/pulls) for focused code or documentation changes. Explain the reason for the change, link the related Issue, and describe how it was tested.
+- Read the complete [contribution guide](CONTRIBUTING.md) before submitting a report or change.
+- Review the proposed [local JPL kernel ephemeris server](docs/LOCAL_EPHEMERIS_SERVER.md), designed to provide a Horizons-compatible fallback and offline ephemerides.
+
 ## Current version: 3.3
 
 DriverDish 3.3 adds the Q37 two-dimensional pointing-correction model, SkyDip measurements, improved signal-search and weather logging, while retaining integrated ephemerides, antenna control, pass planning, RA/Dec tracking, pointing calibration, and antenna-performance analysis.
