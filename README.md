@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **Report a problem / Informar de un problema**
+>
+> Use the **[EA3HMJ Tracking Software Suite Bug Report Form](https://docs.google.com/forms/d/e/1FAIpQLSeziFVQvGoITdWjqzEJbjLdb-zfMSYb1OGPp3MW6a8Ecp-KSQ/viewform)** for DriverDish or ControllerDish. No GitHub account is required. / Usa el formulario para comunicar problemas de DriverDish o ControllerDish. No es necesaria una cuenta de GitHub.
+
 # DriverDish
 
 DriverDish is the main Windows application of the [EA3HMJ Tracking Software Suite](https://github.com/EA3HMJ-Tracking-Software-Suite). It calculates target ephemerides, generates pointing commands, communicates with [ControllerDish](https://github.com/EA3HMJ-Tracking-Software-Suite/ControllerDish), and provides the tools required to operate and evaluate a high-precision two-axis antenna tracking system.
