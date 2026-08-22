@@ -1,7 +1,10 @@
 > [!IMPORTANT]
-> **Report a problem / Informar de un problema**
+> **Bug reports and proposals / Errores y propuestas**
 >
-> Use the **[EA3HMJ Tracking Software Suite Bug Report Form](https://docs.google.com/forms/d/e/1FAIpQLSeziFVQvGoITdWjqzEJbjLdb-zfMSYb1OGPp3MW6a8Ecp-KSQ/viewform)** for DriverDish or ControllerDish. No GitHub account is required. / Usa el formulario para comunicar problemas de DriverDish o ControllerDish. No es necesaria una cuenta de GitHub.
+> - **Report a problem / Informar de un problema:** use the **[Bug Report Form](https://docs.google.com/forms/d/e/1FAIpQLSeziFVQvGoITdWjqzEJbjLdb-zfMSYb1OGPp3MW6a8Ecp-KSQ/viewform)**.
+> - **Suggest an improvement or propose a new idea / Sugerir una mejora o proponer una idea:** use the **[Ideas and Improvements Form](https://docs.google.com/forms/d/e/1FAIpQLSeNmvvk4FHJZaDxr2Vs2hsYB6KJVRqpH_RCluL7Kdtbl0Fcug/viewform)**.
+>
+> No GitHub account is required. Proposals are reviewed before being published in [GitHub Discussions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/discussions). / No es necesaria una cuenta de GitHub. Las propuestas se revisan antes de publicarse en GitHub Discussions.
 
 # DriverDish
 
@@ -18,7 +21,8 @@ It is intended for amateur Earth-Moon-Earth communication (EME), radio astronomy
 
 Because of the complexity of the project and its wide range of possible hardware, software, and observing configurations, GitHub Issues and Pull Requests are used to manage DriverDish development more effectively.
 
-- Use [Issues](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/issues) to report one bug or request one feature at a time. Include the DriverDish and Windows versions, hardware and SDR configuration, reproduction steps, logs, and screenshots when available.
+- Use the [Bug Report Form](https://docs.google.com/forms/d/e/1FAIpQLSeziFVQvGoITdWjqzEJbjLdb-zfMSYb1OGPp3MW6a8Ecp-KSQ/viewform) to report one bug at a time. Include the DriverDish and Windows versions, hardware and SDR configuration, reproduction steps, logs, and screenshots when available. Reports are reviewed before an Issue is created.
+- Use the [Ideas and Improvements Form](https://docs.google.com/forms/d/e/1FAIpQLSeNmvvk4FHJZaDxr2Vs2hsYB6KJVRqpH_RCluL7Kdtbl0Fcug/viewform) for feature suggestions and new ideas. Proposals are reviewed before being published in [Discussions](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/discussions).
 - Use [Pull Requests](https://github.com/EA3HMJ-Tracking-Software-Suite/DriverDish/pulls) for focused code or documentation changes. Explain the reason for the change, link the related Issue, and describe how it was tested.
 - Read the complete [contribution guide](CONTRIBUTING.md) before submitting a report or change.
 - Review the proposed [local JPL kernel ephemeris server](docs/LOCAL_EPHEMERIS_SERVER.md), designed to provide a Horizons-compatible fallback and offline ephemerides.
