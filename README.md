@@ -172,6 +172,8 @@ The following documents describe installation, configuration, and specialist wor
 - [Automatic correction - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Autocorrection%20V1.0%20ESP.pdf)
 - [Drift Scan - English](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ENG.pdf)
 - [Drift Scan - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20DriftScan%20V1.0%20ESP.pdf)
+- [Drift Ethernet - Spanish](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Ethernet20V1.0%20ESP.pdf)
+- [Drift Ethernet - English](https://github.com/EA3HMJ-Tracking-Software-Suite/.github/blob/main/DriverDish.App%20Ethernet20V1.0%20ENG.pdf)
 
 ## Releases
 
